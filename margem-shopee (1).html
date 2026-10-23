@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d1117" media="(prefers-color-scheme: dark)">
+<title>Margem Shopee</title>
+<style>
+:root{--bg:#f5f6f8;--card:#fff;--tx:#161b26;--mut:#697386;--bd:#e6e9ef;--fill:#f1f3f7;--pri:#4f5bd5;--btn:#4f5bd5;--pbg:rgba(79,91,213,.10);--ring:rgba(79,91,213,.18);--ok:#15803d;--warn:#b45309;--bad:#dc2626;--okbg:#e8f5ec;--warnbg:#fdf3e1;--badbg:#fdecec;--navbg:rgba(255,255,255,.88);--sh:0 1px 2px rgba(16,24,40,.04),0 6px 18px rgba(16,24,40,.05);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0d1117;--card:#151b23;--tx:#e8ecf2;--mut:#8b96a7;--bd:#232c37;--fill:#1b232d;--pri:#8f99f7;--btn:#5b66e0;--pbg:rgba(143,153,247,.16);--ring:rgba(143,153,247,.28);--ok:#4ade80;--warn:#fbbf24;--bad:#f87171;--okbg:#10261a;--warnbg:#2a2110;--badbg:#2d1618;--navbg:rgba(21,27,35,.88);--sh:none;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1117;--card:#151b23;--tx:#e8ecf2;--mut:#8b96a7;--bd:#232c37;--fill:#1b232d;--pri:#8f99f7;--btn:#5b66e0;--pbg:rgba(143,153,247,.16);--ring:rgba(143,153,247,.28);--ok:#4ade80;--warn:#fbbf24;--bad:#f87171;--okbg:#10261a;--warnbg:#2a2110;--badbg:#2d1618;--navbg:rgba(21,27,35,.88);--sh:none;color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-variant-numeric:tabular-nums;padding-bottom:104px;overscroll-behavior-y:none}
+[hidden]{display:none!important}
+.wrap{max-width:560px;margin:0 auto;padding:18px 16px}
+header h1{margin:0;font-size:26px;font-weight:800;letter-spacing:-.02em}
+header p{margin:4px 0 18px;color:var(--mut);font-size:14px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:16px;margin-bottom:14px;box-shadow:var(--sh)}
+h2{font-size:12px;margin:0 0 4px;text-transform:uppercase;letter-spacing:.07em;color:var(--mut);font-weight:700}
+label{display:block;font-size:12px;color:var(--mut);font-weight:600}
+input,select{width:100%;min-height:48px;margin-top:6px;padding:12px 13px;font:inherit;font-size:16px;border:1px solid transparent;border-radius:12px;background:var(--fill);color:var(--tx);outline:0;-webkit-appearance:none;appearance:none;transition:box-shadow .15s,border-color .15s}
+input:focus,select:focus{border-color:var(--pri);box-shadow:0 0 0 3px var(--ring)}
+input::placeholder{color:var(--mut);opacity:.6}
+select{padding-right:38px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%238a94a6' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m1 1.5 5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.row{display:flex;gap:10px;margin-bottom:14px}
+.card .row{margin:12px 0 0}
+button{font:inherit;font-weight:600;font-size:15px;min-height:48px;padding:12px;border-radius:12px;border:0;background:var(--fill);color:var(--tx);flex:1;cursor:pointer;transition:transform .1s,opacity .15s}
+button:active{transform:scale(.97);opacity:.9}
+button.pri{background:var(--btn);color:#fff}
+button.wa{background:#1faa59;color:#fff}
+button.ghost{background:transparent;border:1px solid var(--bd);color:var(--mut)}
+.res{position:relative;overflow:hidden}
+.res::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--bd)}
+.res.ok::before{background:var(--ok)}.res.warn::before{background:var(--warn)}.res.bad::before{background:var(--bad)}
+.top{text-align:center;padding:6px 0 10px}
+.big{font-size:38px;font-weight:800;letter-spacing:-.03em;margin:8px 0 2px}
+.res.ok .big{color:var(--ok)}.res.warn .big{color:var(--warn)}.res.bad .big{color:var(--bad)}
+.top small,.kp small{color:var(--mut);font-size:12px}
+.badge{display:inline-block;font-size:12px;font-weight:700;padding:4px 11px;border-radius:99px}
+.badge.ok{background:var(--okbg);color:var(--ok)}.badge.warn{background:var(--warnbg);color:var(--warn)}.badge.bad{background:var(--badbg);color:var(--bad)}
+.kp{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;text-align:center;padding:12px 6px;background:var(--fill);border-radius:14px;margin:4px 0 10px}
+.kp b{display:block;font-size:17px;margin-top:2px}
+.ln{display:flex;justify-content:space-between;gap:12px;padding:7px 0;font-size:14px}
+.ln span{color:var(--mut)}
+.ln.tot{border-top:1px solid var(--bd);margin-top:4px;padding-top:10px;font-size:15px}.ln.tot span{color:var(--tx);font-weight:700}
+hr{border:0;border-top:1px dashed var(--bd);margin:8px 0}
+.mut,.hint{color:var(--mut);font-size:13px;margin:4px 0}
+.hint{margin:0 0 6px}
+.ph{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.empty{text-align:center;color:var(--mut);padding:30px 12px;font-size:14px}
+.kr{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 0;border-top:1px solid var(--bd);font-size:14px}
+.kr:first-of-type{border-top:0}
+.st{display:flex;align-items:center;gap:8px}
+.st button{width:40px;min-height:40px;flex:none;padding:6px}
+.st b{min-width:20px;text-align:center}
+ul{margin:8px 0 0;padding-left:18px;font-size:14px;color:var(--mut)}
+li{margin:5px 0}
+.chips{display:flex;gap:8px;margin-top:6px}
+.chip{font-size:13px;font-weight:600;padding:12px 6px;border-radius:12px;border:1px solid var(--bd);background:var(--fill);color:var(--tx);flex:1;text-align:center;cursor:pointer}
+.chip.active{background:var(--pbg);border-color:var(--pri);color:var(--pri)}
+nav{position:fixed;left:10px;right:10px;bottom:calc(8px + env(safe-area-inset-bottom,0px));max-width:540px;margin:0 auto;display:flex;gap:2px;background:var(--navbg);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid var(--bd);border-radius:22px;padding:6px;box-shadow:0 8px 30px rgba(16,24,40,.12)}
+nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:none;color:var(--mut);font-size:10.5px;min-height:54px;padding:6px 0;border-radius:16px}
+nav button.on{color:var(--pri);background:var(--pbg)}
+nav svg{pointer-events:none}
+#toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:11px 18px;border-radius:99px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s;white-space:nowrap}
+#toast.on{opacity:1}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><h1>Margem Shopee</h1><p>Compare o custo de compra com o preço de venda e veja se compensa.</p></header>
+
+<section id="v-calc">
+ <div class="card">
+  <h2>Produto</h2>
+  <label style="margin-top:8px">Nome<input id="nome" placeholder="Ex.: Kit Passeio Cachorro"></label>
+  <div class="g2">
+   <label>Custo unitário (R$)<input id="custo" inputmode="decimal" placeholder="0,00"></label>
+   <label>Quantidade comprada<input id="qtd" inputmode="numeric" placeholder="10"></label>
+   <label>Frete da compra (total)<input id="fc" inputmode="decimal" placeholder="0,00"></label>
+   <label>Embalagem por unid.<input id="emb" inputmode="decimal"></label>
+   <label>Outros custos por unid.<input id="out" inputmode="decimal" placeholder="0,00"></label>
+   <label>Frete pago por você<input id="fv" inputmode="decimal"></label>
+   <label>Preço de venda (R$)<input id="preco" inputmode="decimal" placeholder="0,00"></label>
+   <label>Desconto/cupom (%)<input id="desc" inputmode="decimal" placeholder="0"></label>
+  </div>
+  <label style="margin-top:12px">Perfil de comissão Shopee</label><div class="chips"><div class="chip" id="chip-std"></div><div class="chip" id="chip-fge"></div></div><p class="hint" id="feeinfo" style="margin-top:10px"></p>
+ </div>
+ <div id="res"></div>
+ <div class="row"><button class="pri" id="save">Salvar produto</button><button class="ghost" id="clear">Limpar</button></div>
+ <div class="card"><h2>Checklist antes de comprar</h2>
+  <ul><li>A margem fica acima da sua meta depois de frete e taxas?</li><li>Compare com os primeiros anúncios iguais na Shopee.</li><li>Teste com poucas unidades antes de comprar o lote.</li><li>Peça nota fiscal e confira a qualidade na loja.</li><li>Confira as taxas atuais no Centro do Vendedor.</li></ul></div>
+</section>
+
+<section id="v-prods" hidden>
+ <input id="busca" placeholder="Buscar produto…" style="margin:0 0 10px"><select id="ord" style="margin:0 0 10px"><option value="m">Ordenar: maior margem</option><option value="l">Ordenar: maior lucro</option><option value="n">Ordenar: nome (A–Z)</option></select>
+ <div id="plist"></div>
+</section>
+
+<section id="v-kit" hidden>
+ <div class="card"><h2>Montar kit</h2><label style="margin-top:8px">Nome do kit<input id="kn" placeholder="Ex.: Kit Passeio Cachorro"></label><div id="klist"></div><label style="margin-top:10px">Adicionar produto salvo<select id="ksel"></select></label><div class="row"><button id="kadd">Adicionar ao kit</button></div><div class="g2" style="margin-top:0"><label>Item avulso<input id="mn" placeholder="Nome"></label><label>Custo unit. (R$)<input id="mc" inputmode="decimal" placeholder="0,00"></label></div><div class="row"><button id="madd">Adicionar item avulso</button></div></div>
+ <div class="card"><div class="g2" style="margin-top:0">
+  <label>Preço do kit (R$)<input id="kp" inputmode="decimal" placeholder="0,00"></label>
+  <label>Embalagem do kit<input id="ke" inputmode="decimal"></label>
+  <label>Frete pago por você<input id="kf" inputmode="decimal"></label>
+  <label>Desconto/cupom (%)<input id="kd" inputmode="decimal" placeholder="0"></label>
+  <label>Comissão do kit (%)<input id="kc" inputmode="decimal"></label>
+ </div></div>
+ <div id="kres"></div><div class="row"><button class="pri" id="ksave">Salvar kit</button><button class="ghost" id="kclear">Limpar</button></div><h2 style="margin:6px 2px 8px">Kits salvos</h2><div id="kslist"></div>
+</section>
+
+<section id="v-inv" hidden><div id="inv-summary"></div><h2 style="margin:14px 2px 8px">Detalhamento do estoque</h2><div id="inv-list"></div></section>
+
+<section id="v-cfg" hidden>
+ <div class="card"><h2>Taxas e metas</h2>
+  <p class="hint">Valores de exemplo. Confira as taxas atuais no Centro do Vendedor da Shopee, pois mudam com o tempo.</p>
+  <div class="g2">
+   <label>Comissão Shopee (%)<input id="c_com" inputmode="decimal"></label>
+   <label>Comissão Frete Grátis Extra (%)<input id="c_fge" inputmode="decimal"></label>
+   <label>Taxa fixa por item (R$)<input id="c_fixa" inputmode="decimal"></label>
+   <label>Imposto sobre a venda (%)<input id="c_imp" inputmode="decimal"></label>
+   <label>Margem desejada (%)<input id="c_meta" inputmode="decimal"></label>
+   <label>Frete padrão pago por você<input id="c_frete" inputmode="decimal"></label>
+   <label>Embalagem padrão por unid.<input id="c_emb" inputmode="decimal"></label>
+  </div>
+  <div class="row"><button class="ghost" id="reset">Restaurar padrões</button></div></div><div class="card"><h2>Backup dos dados</h2><p class="hint">Copie seus dados para guardar ou levar para outro aparelho.</p><div class="row"><button id="bexp">Copiar backup</button><button id="bimp">Restaurar backup</button></div>
+ </div>
+ <p class="hint">Seus dados ficam salvos apenas neste aparelho e navegador.</p>
+</section>
+</div>
+
+<div id="toast"></div>
+<nav id="nav"><button data-t="calc" class="on"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M8.5 7.5h7M9 12h.01M12 12h.01M15 12h.01M9 16h.01M12 16h.01M15 16h.01"/></svg><span>Calcular</span></button><button data-t="prods"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 7.5 12 3l8.5 4.5v9L12 21l-8.5-4.5z"/><path d="M3.5 7.5 12 12l8.5-4.5M12 12v9"/></svg><span>Produtos</span></button><button data-t="kit"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg><span>Kits</span></button><button data-t="inv"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg><span>Estoque</span></button><button data-t="cfg"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg><span>Taxas</span></button></nav>
+
+<script>
+const $=s=>document.querySelector(s);
+const brl=n=>isFinite(n)?n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'}):'—';
+const pct=n=>isFinite(n)?n.toLocaleString('pt-BR',{maximumFractionDigits:1})+'%':'—';
+const num=v=>{v=String(v).trim();if(v.indexOf(',')>-1)v=v.replace(/\./g,'').replace(',','.');const n=parseFloat(v);return isFinite(n)?n:0};
+const fmt=n=>String(n).replace('.',',');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const S={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const DEF={fge:20,com:14,fixa:4,imp:0,meta:30,frete:0,emb:0.5};
+let cfg=Object.assign({},DEF,S.get('cfg',{}));
+let prods=S.get('prods',[]);
+let ed=-1,curCom=null;const getCom=()=>curCom===null?cfg.com:curCom;
+
+function calc(o){
+ const custoUn=o.custo+(o.qtd>0?o.freteCompra/o.qtd:0)+o.emb+o.outros;
+ const rev=o.preco*(1-o.desc/100);
+ const taxas=rev>0?rev*o.com/100+o.fixa:0;
+ const imp=rev*o.imp/100;
+ const lucro=rev-taxas-imp-custoUn-o.freteVend;
+ const base=custoUn+o.fixa+o.freteVend;
+ const price=m=>{const d=1-(o.com+o.imp+m)/100;const k=1-o.desc/100;return d>0&&k>0?base/d/k:NaN};
+ const invest=o.custo*o.qtd+o.freteCompra+(o.emb+o.outros)*o.qtd;
+ const lote=lucro*o.qtd;
+ return{custoUn,rev,bruto:rev-custoUn,loteB:(rev-custoUn)*o.qtd,taxas,imp,lucro,fv:o.freteVend,margem:rev>0?lucro/rev*100:NaN,markup:custoUn>0?lucro/custoUn*100:NaN,be:price(0),sug:price(cfg.meta),lote,invest,roi:invest>0?lote/invest*100:NaN};
+}
+const status=r=>r.lucro<=0?['bad','Prejuízo']:r.margem>=cfg.meta?['ok','Boa margem']:r.margem>=cfg.meta/2?['warn','Margem apertada']:['bad','Margem baixa'];
+function resHTML(r,tg,nome){
+ const [c,t]=status(r);let arr=Math.floor(r.sug)+0.9;if(arr<r.sug)arr++;const sum=(nome||'Produto')+': custo unit. '+brl(r.custoUn)+', venda '+brl(r.rev)+', lucro bruto unit. '+brl(r.bruto)+', lucro líquido unit. '+brl(r.lucro)+' ('+pct(r.margem)+' de margem). Investimento do lote: '+brl(r.invest)+', lucro líquido do lote: '+brl(r.lote)+'.';
+ const row=(a,b,k)=>`<div class="ln ${k||''}"><span>${a}</span><b>${b}</b></div>`;
+ return `<div class="card res ${c}"><div class="top"><span class="badge ${c}">${t}</span><div class="big">${brl(r.lucro)}</div><small>lucro líquido por unidade</small></div>
+ <div class="kp"><div><small>Margem líquida</small><b>${pct(r.margem)}</b></div><div><small>Markup</small><b>${pct(r.markup)}</b></div><div><small>ROI do lote</small><b>${pct(r.roi)}</b></div></div>
+ ${row('Preço após desconto',brl(r.rev))}${row('− Custo total do produto',brl(r.custoUn))}${row('= Lucro bruto',brl(r.bruto),'tot')}${row('− Comissão e taxa fixa',brl(r.taxas))}${row('− Imposto',brl(r.imp))}${row('− Frete pago por você',brl(r.fv))}${row('= Lucro líquido',brl(r.lucro),'tot')}
+ <hr>${row('Preço mínimo (lucro zero)',brl(r.be))}${row('Preço para margem de '+pct(cfg.meta),brl(r.sug))}${row('Lucro bruto do lote',brl(r.loteB))}${row('Lucro líquido do lote',brl(r.lote),'tot')}${row('Investimento do lote',brl(r.invest))}<p class="hint">Bruto = venda − custo do produto. Líquido = bruto − comissão, taxa, imposto e frete.</p><div class="row"><button data-act="use" data-t="${tg}" data-v="${arr.toFixed(2)}">Usar preço sugerido</button></div><div class="row"><button class="ghost" data-act="copy" data-s="${esc(sum)}">Copiar resumo</button><button class="wa" data-act="wa" data-s="${esc(sum)}">WhatsApp</button></div></div>`;
+}
+const val=id=>num($('#'+id).value);
+const form=()=>({com:getCom(),nome:$('#nome').value.trim(),custo:val('custo'),qtd:val('qtd')||1,fc:val('fc'),emb:val('emb'),out:val('out'),fv:val('fv'),preco:val('preco'),desc:val('desc')});
+const toCalc=f=>({custo:f.custo,qtd:f.qtd,freteCompra:f.fc,emb:f.emb,outros:f.out,freteVend:f.fv,preco:f.preco,desc:f.desc,com:f.com!=null?f.com:cfg.com,fixa:cfg.fixa,imp:cfg.imp});
+
+function renderCalc(){
+ const f=form();
+ const cm=getCom();$('#feeinfo').textContent='Comissão '+pct(cm)+' + '+brl(cfg.fixa)+' por item, imposto '+pct(cfg.imp)+'. Altere na aba Taxas.';
+ $('#chip-std').textContent='Padrão ('+pct(cfg.com)+')';$('#chip-fge').textContent='Frete Grátis Extra ('+pct(cfg.fge)+')';
+ $('#chip-std').classList.toggle('active',cm===cfg.com);$('#chip-fge').classList.toggle('active',cm===cfg.fge&&cm!==cfg.com);
+ $('#res').innerHTML=(f.custo>0&&f.preco>0)?resHTML(calc(toCalc(f)),'preco',f.nome):'<div class="card empty">Preencha o custo e o preço de venda para ver o lucro.</div>';
+ $('#save').textContent=ed>-1?'Atualizar produto':'Salvar produto';
+}
+function renderProds(){
+ const el=$('#plist');
+ if(!prods.length){el.innerHTML='<div class="card empty">Nenhum produto salvo ainda. Use a aba Calcular e toque em Salvar produto.</div>';return}
+ el.innerHTML=prods.map((p,i)=>({p,i,r:calc(toCalc(p))})).filter(x=>(x.p.nome||'').toLowerCase().includes($('#busca').value.toLowerCase())).sort((a,b)=>{const o=$('#ord').value;return o==='n'?(a.p.nome||'').localeCompare(b.p.nome||'','pt-BR'):o==='l'?b.r.lucro-a.r.lucro:(b.r.margem||-999)-(a.r.margem||-999)}).map(({p,i,r})=>{
+  const [c]=status(r);
+  return `<div class="card"><div class="ph"><b>${esc(p.nome||'Sem nome')}</b><span class="badge ${c}">${pct(r.margem)}</span></div><div class="mut">Custo ${brl(r.custoUn)} · Venda ${brl(p.preco)} · Bruto ${brl(r.bruto)} · Líquido ${brl(r.lucro)}/un</div><div class="row"><button data-a="load" data-i="${i}">Editar</button><button data-a="dup" data-i="${i}">Duplicar</button><button class="ghost" data-a="del" data-i="${i}">Excluir</button></div></div>`}).join('');
+}
+let kit=[],ked=-1,kits=S.get('kits',[]);
+function kform(){return{nome:$('#kn').value.trim(),items:kit,com:num($('#kc').value)||cfg.com,preco:num($('#kp').value),emb:num($('#ke').value),fv:num($('#kf').value),desc:num($('#kd').value)}}
+function kcalc(k){const soma=k.items.reduce((s,x)=>s+x.custo*x.qtd,0);return{soma,n:k.items.reduce((s,x)=>s+x.qtd,0),r:calc({custo:soma,qtd:1,freteCompra:0,emb:k.emb,outros:0,freteVend:k.fv,preco:k.preco,desc:k.desc,com:k.com!=null?k.com:cfg.com,fixa:cfg.fixa,imp:cfg.imp})}}
+function renderKitRes(){
+ const k=kform(),c=kcalc(k);
+ $('#ksave').textContent=ked>-1?'Atualizar kit':'Salvar kit';
+ $('#kres').innerHTML=(k.items.length&&k.preco>0)?`<p class="hint">${c.n} item(ns) · custo dos itens ${brl(c.soma)}</p>`+resHTML(c.r,'kp',k.nome||'Kit'):'<div class="card empty">Adicione os itens e informe o preço do kit.</div>';
+}
+function renderKit(){
+ $('#klist').innerHTML=kit.length?kit.map((x,i)=>`<div class="kr"><span>${esc(x.nome)}<br><small class="mut">${brl(x.custo)} cada</small></span><div class="st"><button data-k="-" data-i="${i}">−</button><b>${x.qtd}</b><button data-k="+" data-i="${i}">+</button><button class="ghost" data-k="x" data-i="${i}">✕</button></div></div>`).join(''):'<p class="hint" style="margin-top:8px">Nenhum item no kit ainda.</p>';
+ $('#ksel').innerHTML=prods.length?prods.map((p,i)=>`<option value="${i}">${esc(p.nome||'Sem nome')}</option>`).join(''):'<option value="">Nenhum produto salvo</option>';
+ $('#kslist').innerHTML=kits.length?kits.map((k,i)=>{const c=kcalc(k),[s]=status(c.r);return `<div class="card"><div class="ph"><b>${esc(k.nome||'Kit')}</b><span class="badge ${s}">${pct(c.r.margem)}</span></div><div class="mut">${c.n} itens · Custo ${brl(c.r.custoUn)} · Venda ${brl(k.preco)} · Bruto ${brl(c.r.bruto)} · Líquido ${brl(c.r.lucro)}</div><div class="row"><button data-a="kload" data-i="${i}">Editar</button><button class="ghost" data-a="kdel" data-i="${i}">Excluir</button></div></div>`}).join(''):'<div class="card empty">Nenhum kit salvo.</div>';
+ renderKitRes();
+}
+function renderInvestimentos(){
+ let ti=0,tl=0,tf=0,tb=0;
+ const it=prods.map(p=>({p,r:calc(toCalc(p))})).sort((a,b)=>b.r.lote-a.r.lote);
+ it.forEach(({p,r})=>{ti+=r.invest;tl+=r.lote;tf+=r.rev*p.qtd;tb+=r.loteB});
+ $('#inv-summary').innerHTML=it.length?`<div class="card res ok"><div class="top"><span class="badge ok">Capital empregado</span><div class="big">${brl(ti)}</div><small>total investido nos produtos salvos</small></div><div class="kp"><div><small>Faturamento</small><b>${brl(tf)}</b></div><div><small>Lucro bruto</small><b>${brl(tb)}</b></div><div><small>Lucro líquido</small><b>${brl(tl)}</b></div></div><p class="hint">ROI geral ${pct(ti>0?tl/ti*100:NaN)} · Estimativa se vender tudo pelo preço informado.</p></div>`:'';
+ $('#inv-list').innerHTML=it.length?it.map(({p,r})=>`<div class="card"><div class="ph"><b>${esc(p.nome||'Sem nome')}</b><span class="badge ok">${p.qtd} un.</span></div><div class="ln" style="margin-top:6px"><span>Investimento</span><b>${brl(r.invest)}</b></div><div class="ln"><span>Faturamento estimado</span><b>${brl(r.rev*p.qtd)}</b></div><div class="ln"><span>ROI</span><b>${pct(r.roi)}</b></div><div class="ln"><span>Lucro bruto do lote</span><b>${brl(r.loteB)}</b></div><div class="ln tot"><span>Lucro líquido do lote</span><b>${brl(r.lote)}</b></div></div>`).join(''):'<div class="card empty">Salve produtos para ver os investimentos.</div>';
+}
+function copyText(t,msg){const ok=()=>toast(msg),fb=()=>{try{const a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();ok()}catch(x){toast('Não foi possível copiar')}};try{navigator.clipboard.writeText(t).then(ok,fb)}catch(x){fb()}}
+function all(){renderCalc();renderProds();renderKit();renderInvestimentos()}
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),1600)}
+function setForm(p){['nome','custo','qtd','fc','emb','out','fv','preco','desc'].forEach(k=>{const v=p?p[k]:'';$('#'+k).value=(v===undefined||v===0||v==='')?'':(typeof v==='number'?fmt(v):v)});}
+function resetForm(){setForm(null);$('#emb').value=fmt(cfg.emb);$('#fv').value=fmt(cfg.frete);$('#qtd').value='';ed=-1;curCom=null;renderCalc()}
+function tab(t){
+ document.querySelectorAll('section').forEach(s=>s.hidden=s.id!=='v-'+t);
+ document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
+ if(t==='prods')renderProds();if(t==='kit')renderKit();if(t==='inv')renderInvestimentos();window.scrollTo(0,0);
+}
+
+document.querySelectorAll('#v-calc input').forEach(i=>i.addEventListener('input',renderCalc));
+['kn','kp','ke','kf','kd','kc'].forEach(id=>$('#'+id).addEventListener('input',renderKitRes));
+$('#nav').addEventListener('click',e=>{const b=e.target.closest('button');if(b)tab(b.dataset.t)});
+$('#clear').onclick=resetForm;
+$('#save').onclick=()=>{
+ const f=form();
+ if(!(f.custo>0&&f.preco>0)){toast('Informe custo e preço');return}
+ if(!f.nome)f.nome='Produto '+(prods.length+1);
+ if(ed>-1)prods[ed]=f;else prods.push(f);
+ S.set('prods',prods);toast(ed>-1?'Produto atualizado':'Produto salvo');resetForm();
+};
+$('#plist').addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b)return;const i=+b.dataset.i;
+ if(b.dataset.a==='del'){if(confirm('Excluir este produto?')){prods.splice(i,1);S.set('prods',prods);renderProds()}}
+ if(b.dataset.a==='dup'){prods.push({...prods[i],nome:(prods[i].nome||'Produto')+' (cópia)'});S.set('prods',prods);renderProds();toast('Produto duplicado')}
+ if(b.dataset.a==='load'){setForm(prods[i]);curCom=prods[i].com!=null?prods[i].com:null;ed=i;renderCalc();tab('calc')}
+});
+$('#klist').addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b)return;const i=+b.dataset.i;
+ if(b.dataset.k==='x')kit.splice(i,1);else kit[i].qtd=Math.max(1,kit[i].qtd+(b.dataset.k==='+'?1:-1));renderKit();
+});
+['com','fge','fixa','imp','meta','frete','emb'].forEach(k=>{
+ const el=$('#c_'+k);el.value=fmt(cfg[k]);
+ el.addEventListener('input',e=>{cfg[k]=num(e.target.value);S.set('cfg',cfg);all()});
+});
+$('#reset').onclick=()=>{cfg=Object.assign({},DEF);S.set('cfg',cfg);['com','fge','fixa','imp','meta','frete','emb'].forEach(k=>$('#c_'+k).value=fmt(cfg[k]));all();toast('Padrões restaurados')};
+$('#busca').addEventListener('input',renderProds);
+function kreset(){kit=[];ked=-1;['kn','kp','mn','mc','kd'].forEach(id=>$('#'+id).value='');$('#ke').value=fmt(cfg.emb);$('#kf').value=fmt(cfg.frete);$('#kc').value=fmt(cfg.com);renderKit()}
+$('#kclear').onclick=kreset;
+$('#ksave').onclick=()=>{const k=kform();if(!k.items.length||!(k.preco>0))return toast('Adicione itens e preço');if(!k.nome)k.nome='Kit '+(kits.length+1);k.items=k.items.map(x=>({...x}));if(ked>-1)kits[ked]=k;else kits.push(k);S.set('kits',kits);toast('Kit salvo');kreset()};
+$('#kadd').onclick=()=>{const p=prods[+$('#ksel').value];if(!p)return toast('Salve um produto primeiro');const n=p.nome||'Sem nome',c=p.custo+(p.qtd>0?p.fc/p.qtd:0)+p.out,x=kit.find(i=>i.nome===n&&i.custo===c);x?x.qtd++:kit.push({nome:n,custo:c,qtd:1});renderKit()};
+$('#madd').onclick=()=>{const c=num($('#mc').value),n=$('#mn').value.trim();if(!n||!(c>0))return toast('Informe nome e custo');kit.push({nome:n,custo:c,qtd:1});$('#mn').value=$('#mc').value='';renderKit()};
+$('#kslist').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const i=+b.dataset.i;
+ if(b.dataset.a==='kdel'&&confirm('Excluir este kit?')){kits.splice(i,1);S.set('kits',kits);renderKit()}
+ if(b.dataset.a==='kload'){const k=kits[i];kit=k.items.map(x=>({...x}));ked=i;$('#kn').value=k.nome;$('#kp').value=fmt(k.preco);$('#ke').value=fmt(k.emb);$('#kf').value=fmt(k.fv);$('#kd').value=k.desc?fmt(k.desc):'';$('#kc').value=fmt(k.com!=null?k.com:cfg.com);renderKit();window.scrollTo(0,0)}});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(!b)return;
+ if(b.dataset.act==='use'){const v=+b.dataset.v;if(!isFinite(v))return;$('#'+b.dataset.t).value=fmt(v);(b.dataset.t==='kp'?renderKitRes:renderCalc)();toast('Preço aplicado')}
+ if(b.dataset.act==='copy')copyText(b.dataset.s,'Resumo copiado');if(b.dataset.act==='wa')window.open('https://wa.me/?text='+encodeURIComponent(b.dataset.s),'_blank')});
+document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{curCom=c.id==='chip-fge'?cfg.fge:null;renderCalc()});
+$('#ord').addEventListener('change',renderProds);
+$('#bexp').onclick=()=>copyText(JSON.stringify({cfg,prods,kits}),'Backup copiado');
+$('#bimp').onclick=()=>{const t=prompt('Cole aqui o backup');if(!t)return;try{const d=JSON.parse(t);if(d.cfg)cfg=Object.assign({},DEF,d.cfg);if(Array.isArray(d.prods))prods=d.prods;if(Array.isArray(d.kits))kits=d.kits;S.set('cfg',cfg);S.set('prods',prods);S.set('kits',kits);['com','fge','fixa','imp','meta','frete','emb'].forEach(k=>$('#c_'+k).value=fmt(cfg[k]));all();toast('Backup restaurado')}catch(x){toast('Backup inválido')}};
+kreset();
+resetForm();
+</script>
+</body>
+</html>
